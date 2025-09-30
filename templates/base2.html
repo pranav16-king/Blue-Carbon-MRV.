@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NCCR Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/static/CSS/base2.css">
+
+</head>
+
+<body class="flex bg-blue-50 min-h-screen">
+
+    <!-- Sidebar -->
+    <header id="sidebar">
+        <!-- Collapse/Expand Button -->
+        <button id="toggleSidebar" class="toggle-btn text-4xl">☰</button>
+
+        <!-- Sidebar Title -->
+        <h1 class="text-xl font-bold mb-8 text-center transition-all duration-300 header-title">🌍 NCCR Admin</h1>
+
+        <!-- Navigation -->
+        <div class="flex flex-col space-y-2 w-full px-2">
+            <a href="/admin_home" class="nav-link"><span class="emoji">🏠</span><span class="label">Home</span></a>
+            <a href="/admin" class="nav-link"><span class="emoji">📊</span><span class="label">Dashboard</span></a>
+            <a href="/live_map_data" class="nav-link"><span class="emoji">🗺️</span><span class="label">Live
+                    Map</span></a>
+            <a href="/reports" class="nav-link"><span class="emoji">📄</span><span class="label">Reports</span></a>
+            <a href="/review" class="nav-link"><span class="emoji">🌱</span><span class="label">Projects</span></a>
+            <a href="/notifications" class="nav-link"><span class="emoji">🔔</span><span
+                    class="label">Notifications</span></a>
+            <a href="{{ url_for('setting') }}" class="nav-link"><span class="emoji">⚙️</span><span
+                    class="label">Settings</span></a>
+        </div>
+
+        <!-- Profile Section -->
+        <div class="profile mt-6 w-full">
+            <img src="/static/images_index/profile_avatar.png" alt="Profile">
+            <div class="flex flex-col">
+                <span class="text-sm font-semibold">Welcome, {{name}}</span>
+                <a href="/logout">
+                    <button
+                        class="bg-blue-800 text-white text-sm px-3 py-1 rounded-md mt-1 hover:bg-blue-900 transition">
+                        Logout
+                    </button>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="mainContent" class="flex-1 ml-[240px] p-6 transition-all duration-300">
+        {% block content %}
+        {% endblock %}
+    </main>
+    <script src="/static/JS/base2.js"></script>
+</body>
+
+</html>

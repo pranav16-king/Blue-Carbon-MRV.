@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Login</title>
+    <link rel="website icon" type="svg" href="/images/user.svg">
+    <link rel="stylesheet" href="/static/CSS/login.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-box login ">
+            <form action="/submit" method="POST" class="action">
+                <h1>Login</h1>
+                <div class="input-box">
+                    <input type="text" name="username" placeholder="Username" required>
+                    <img src="/static/images/user.svg" name="username " alt="image unavilable" class="user">
+                </div>
+                <div class="input-box">
+                    <input type="password" name="password" placeholder="Password" required>
+                    <img src="/static/images/lock.svg" alt="image unavilable" class="lock">
+                </div>
+                <label for="choices" class="input_lable" required>Select an Option:</label>
+                <select id="choices" name="choices" required class="custom-select">
+                    <option value="" disabled selected>-- Choose Option --</option>
+
+                    <option value="Buyer/seller">Buyer/Seller</option>
+                    <option value="Admin">Admin</option>
+                </select>
+
+                <div class="forgot-link">
+                    <a href="a"> Forget Password </a>
+                </div>
+                <button type="submit" class="btn">Login</button>
+                <P>or login with social platform</P>
+                <div class="social-icon">
+                    <a href="google"><img src="/static/images/google.svg" alt="image unavilable" class="app google"></a>
+                    <a href="facebook"><img src="/static/images/facebook.svg" alt="image unavilable"
+                            class="app facebook"></a>
+                    <a href="github"><img src="/static/images/github.svg" alt="image unavilable" class="app github"></a>
+                    <a href="linkdin"><img src="/static/images/linkdin.svg" image unavilable" class="app linkdin"></a>
+                </div>
+            </form>
+        </div>
+        <div class="form-box register ">
+            <form action="/register" method="POST" class="action">
+                <h1>Registration</h1>
+                <div class="input-box">
+                    <input type="text" name="username" placeholder="Username" required>
+                    <img src="/static/images/user.svg" alt="image unavilable" class="user">
+                </div>
+                <div class="input-box">
+                    <input type="email" name="email" placeholder="Email" required>
+                    <img src="/static/images/envelope.svg" alt="image unavilable" class="user">
+                </div>
+                <div class="input-box">
+                    <input type="password" name="password" placeholder="Password" required>
+                    <img src="/static/images/lock.svg" alt="image unavilable" class="lock">
+                </div>
+                <!-- <label for="choices" class="input_lable" required>Select an Option:</label>
+                <select id="choices" name="choices" required class="custom-select">
+                    <option value="" disabled selected >-- Choose Option --</option>
+
+                    <option value="Buyer/seller">Buyer/Seller</option>
+                    <option value="Admin">Admin</option>
+                </select> -->
+                <button type="submit" class="btn">Resister</button>
+                <P>or register with social platform</P>
+                <div class="social-icon">
+                    <a href="google"><img src="/static/images/google.svg" alt="image unavilable" class="app google"></a>
+                    <a href="facebook"><img src="/static/images/facebook.svg" alt="image unavilable"
+                            class="app facebook"></a>
+                    <a href="github"><img src="/static/images/github.svg" alt="image unavilable" class="app github"></a>
+                    <a href="linkdin"><img src="/static/images/linkdin.svg" alt="image unavilable"
+                            class="app linkdin"></a>
+                </div>
+            </form>
+        </div>
+        <div class="toggle-box">
+            <div class="toggle-panel toggle-left">
+                <h1>Hello , Welcome</h1>
+                <p>don't have an account ? </p>
+                <button class="btn register-btn"> Register</button>
+            </div>
+            <div class="toggle-panel toggle-right">
+                <h1> Welcome Back !</h1>
+                <p>Already have an account ? </p>
+                <button class="btn login-btn"> Login</button>
+            </div>
+        </div>
+    </div>
+    <script src="/static/JS/login.js"></script>
+</body>
+
+</html>

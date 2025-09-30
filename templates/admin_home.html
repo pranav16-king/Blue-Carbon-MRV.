@@ -1,0 +1,152 @@
+{% extends "base2.html" %}
+
+<body class="bg-sky-50 font-sans text-gray-800">
+    {% block content %}
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Admin Home Page</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <link rel="stylesheet" href="/static/CSS/admin_home.css">
+
+    </head>
+
+    <body class="bg-blue-50 text-gray-800 min-h-screen flex flex-col">
+
+        <!-- Hero Section -->
+        <section class="relative mb-12 overflow-hidden rounded-2xl shadow-lg">
+            <!-- Background Image + Overlay -->
+            <div class="absolute inset-0">
+                <img src="https://source.unsplash.com/1600x900/?coast,forest" alt="Blue Carbon Ecosystem"
+                    class="w-full h-full object-cover opacity-40 animate-fadeIn">
+                <div class="absolute inset-0 bg-gradient-to-r from-blue-600 via-teal-500 to-blue-400 opacity-80"></div>
+            </div>
+
+            <!-- Content -->
+            <div
+                class="relative z-10 container mx-auto px-6 py-16 flex flex-col md:flex-row items-center justify-between gap-8">
+                <div class="md:w-1/2 text-white animate-slideUp">
+                    <h1 class="text-5xl font-extrabold mb-4">🌊 NCCR Admin </h1>
+                    <p class="text-lg mb-6">Monitor projects, verify carbon credits, and manage ecosystem data with
+                        transparency and real-time updates.</p>
+                    <!-- <div class="flex flex-wrap gap-4">
+                        <a href="/review" class="bg-white text-blue-600 font-semibold px-6 py-3 rounded-xl shadow hover:bg-gray-100 transition transform hover:scale-105">
+                            Manage Projects
+                        </a>
+                        <a href="/carbon_credits"
+                            class="bg-white text-green-600 font-semibold px-6 py-3 rounded-xl shadow hover:bg-gray-100 transition transform hover:scale-105">
+                            Carbon Credits
+                        </a>
+
+                    </div> -->
+                </div>
+
+                <div class="md:w-1/2 animate-fadeIn">
+                    <img src="https://source.unsplash.com/400x400/?technology,admin" alt="Admin Illustration"
+                        class="rounded-2xl shadow-2xl">
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Actions -->
+        <section class="mb-12 animate-slideUp">
+            <h2 class="text-2xl font-bold mb-4 text-gray-800">⚡ Quick Actions</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+                <a href="/review"
+                    class="bg-gradient-to-r from-teal-400 to-blue-500 text-white rounded-xl shadow-lg p-6 flex flex-col items-center hover:scale-105 transition animate-fadeIn">
+                    <span class="text-4xl mb-2">🌱</span>
+                    <p class="font-semibold">Manage Projects</p>
+                </a>
+                <a href="/carbon_credits"
+                    class="bg-gradient-to-r from-green-400 to-teal-500 text-white rounded-xl shadow-lg p-6 flex flex-col items-center hover:scale-105 transition animate-fadeIn delay-100">
+                    <span class="text-4xl mb-2"></span>
+                    <p class="font-semibold"> </p>
+                </a>
+                <a href="/data_uploads"
+                    class="bg-gradient-to-r from-orange-400 to-red-500 text-white rounded-xl shadow-lg p-6 flex flex-col items-center hover:scale-105 transition animate-fadeIn delay-200">
+                    <span class="text-4xl mb-2"></span>
+                    <p class="font-semibold"></p>
+                </a>
+                <a href="/users"
+                    class="bg-gradient-to-r from-purple-400 to-indigo-500 text-white rounded-xl shadow-lg p-6 flex flex-col items-center hover:scale-105 transition animate-fadeIn delay-300">
+                    <span class="text-4xl mb-2"></span>
+                    <p class="font-semibold"></p>
+                </a>
+            </div>
+        </section>
+
+        <!-- Graphs Section -->
+        <section class="grid md:grid-cols-2 gap-8 mb-12">
+            <div class="bg-white shadow-lg rounded-xl p-6 animate-slideUp">
+                <h3 class="text-xl font-bold mb-4">📊 Project Status Overview</h3>
+                <canvas id="projectChart"></canvas>
+            </div>
+            <div class="bg-white shadow-lg rounded-xl p-6 animate-slideUp delay-100">
+                <h3 class="text-xl font-bold mb-4">💳 Carbon Credits Issued</h3>
+                <canvas id="creditChart"></canvas>
+            </div>
+        </section>
+
+        <!-- Admin Tools -->
+        <section class="py-20 bg-gradient-to-r from-sky-50 via-indigo-50 to-purple-50 
+                  rounded-3xl shadow-2xl">
+            <h2 class="text-5xl font-extrabold text-center mb-16 text-indigo-700">🛠️ Admin Tools</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+                <div class="bg-white rounded-3xl p-12 shadow-2xl hover:scale-110 transition duration-500 
+                  border-t-4 border-sky-400 glow">
+                    <h3 class="text-2xl font-bold mb-4 text-sky-700">Organization Verification</h3>
+                    <p class="text-gray-600 mb-6">Verify NGOs, communities, and local partners with KYC process.</p>
+                    <button
+                        class="bg-sky-600 text-white px-10 py-3 rounded-xl hover:bg-sky-700 transition">Manage</button>
+                </div>
+                <div class="bg-white rounded-3xl p-12 shadow-2xl hover:scale-110 transition duration-500 
+                  border-t-4 border-emerald-400 glow">
+                    <h3 class="text-2xl font-bold mb-4 text-emerald-700">Project Approval</h3>
+                    <p class="text-gray-600 mb-6">Review and approve projects with due diligence process.</p>
+                    <button
+                        class="bg-emerald-600 text-white px-10 py-3 rounded-xl hover:bg-emerald-700 transition">Review</button>
+                </div>
+                <div class="bg-white rounded-3xl p-12 shadow-2xl hover:scale-110 transition duration-500 
+                  border-t-4 border-purple-400 glow">
+                    <h3 class="text-2xl font-bold mb-4 text-purple-700">Audit & Compliance</h3>
+                    <p class="text-gray-600 mb-6">Monitor MRV standards and conduct project audits.</p>
+                    <button
+                        class="bg-purple-600 text-white px-10 py-3 rounded-xl hover:bg-purple-700 transition">Audit</button>
+                </div>
+                <div class="bg-white rounded-3xl p-12 shadow-2xl hover:scale-110 transition duration-500 
+                  border-t-4 border-rose-400 glow">
+                    <h3 class="text-2xl font-bold mb-4 text-rose-700">Credit Management</h3>
+                    <p class="text-gray-600 mb-6">Manage credit issuance, retirement, and market trades.</p>
+                    <button
+                        class="bg-rose-600 text-white px-10 py-3 rounded-xl hover:bg-rose-700 transition">Console</button>
+                </div>
+                <div class="bg-white rounded-3xl p-12 shadow-2xl hover:scale-110 transition duration-500 
+                  border-t-4 border-yellow-400 glow">
+                    <h3 class="text-2xl font-bold mb-4 text-yellow-700">Analytics & Reporting</h3>
+                    <p class="text-gray-600 mb-6">Generate detailed reports for regulators and partners.</p>
+                    <button
+                        class="bg-yellow-500 text-white px-10 py-3 rounded-xl hover:bg-yellow-600 transition">Reports</button>
+                </div>
+                <div class="bg-white rounded-3xl p-12 shadow-2xl hover:scale-110 transition duration-500 
+                  border-t-4 border-teal-400 glow">
+                    <h3 class="text-2xl font-bold mb-4 text-teal-700">System Settings</h3>
+                    <p class="text-gray-600 mb-6">Configure blockchain and trading platform parameters.</p>
+                    <button
+                        class="bg-teal-600 text-white px-10 py-3 rounded-xl hover:bg-teal-700 transition">Config</button>
+                </div>
+            </div>
+        </section>
+
+
+        <script src="/static/JS/admin_home.js"></script>
+    </body>
+
+    </html>
+
+
+    {% endblock %}
+</body>

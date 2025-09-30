@@ -1,0 +1,90 @@
+  /* Custom Animations */
+  .fade-in {
+    animation: fadeIn 1.2s ease-in-out;
+  }
+
+  .slide-up {
+    animation: slideUp 0.8s ease-in-out;
+  }
+
+  .bounce {
+    animation: bounce 2s infinite;
+  }
+
+  .pulse {
+    animation: pulse 2s infinite;
+  }
+
+  .zoom-in {
+    animation: zoomIn 0.6s ease-in-out;
+  }
+
+  .glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      transform: translateY(40px);
+      opacity: 0;
+    }
+
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes bounce {
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+
+  @keyframes pulse {
+
+    0%,
+    100% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0.5;
+    }
+  }
+
+  @keyframes zoomIn {
+    from {
+      transform: scale(0.9);
+    }
+
+    to {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes glow {
+    from {
+      box-shadow: 0 0 10px #38bdf8;
+    }
+
+    to {
+      box-shadow: 0 0 25px #3b82f6;
+    }
+  }

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlueCarbonChain - Blockchain MRV</title>
+    <link rel="stylesheet" href="/static/CSS/Ai_icon.css">
+    <link rel="stylesheet" href="/static/CSS/base.css">
+</head>
+
+<body class="body-a">
+
+    <!-- Header / Navigation -->
+    <header class="header-a">
+        <div class="header-container-a" style="position: relative; right:40px;">
+            <div class="logo-a" style="position: relative; right:20px;">
+                <div class="logo-icon-a">🌿</div>
+                <h1 class="logo-text-a">BlueCarbonChain</h1>
+            </div>
+            <nav class="nav-a" style="gap: 40px;">
+                <a href="/home1" class="nav-link-a">Home</a>
+                <a href="/news2" class="nav-link-a">News</a>
+                <a href="#credits" class="nav-link-a">Carbon Credits</a>
+                <a href="/upload_data" class="nav-link-a">Data Upload</a>
+                <a href="/calculator" class="nav-link-a">Carbon Calculator</a>
+                <a href="/contact" class="nav-link-a">Contact</a>
+                <div class="profile-a">
+                    <img src="/static/images_index/profile_avatar.png" alt="profile" class="profile-img-a">
+                    <div class="welcome-user-a">
+                        Welcome, {{ name }}
+                        <a href="/logout"> <button class="logout-a">Logout</button></a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-a">
+        {% block contain %}
+        <!-- Content will be injected here -->
+        {% endblock contain %}
+    </main>
+    <div class="ai">
+        <button class="ai-btn"><a href="/ai"><img src="/static/AI_images/AI.png" alt="image unavialabe"></a></button>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer-a">
+        <div class="footer-container-a">
+            <div class="footer-section-a">
+                <h4 class="footer-title-a">BlueCarbonChain</h4>
+                <p class="footer-text-a">Blockchain-powered MRV for India's blue carbon ecosystems</p>
+            </div>
+            <div class="footer-section-a">
+                <h4 class="footer-title-a">Quick Links</h4>
+                <ul class="footer-list-a">
+                    <li><a href="#" class="footer-link-a">About Us</a></li>
+                    <li><a href="#" class="footer-link-a">Documentation</a></li>
+                    <li><a href="#" class="footer-link-a">API Access</a></li>
+                    <li><a href="#" class="footer-link-a">Support</a></li>
+                </ul>
+            </div>
+            <div class="footer-section-a">
+                <h4 class="footer-title-a">Partners</h4>
+                <ul class="footer-list-a">
+                    <li><a href="#" class="footer-link-a">NCCR India</a></li>
+                    <li><a href="#" class="footer-link-a">State Governments</a></li>
+                    <li><a href="#" class="footer-link-a">Research Institutes</a></li>
+                    <li><a href="#" class="footer-link-a">NGO Partners</a></li>
+                </ul>
+            </div>
+            <div class="footer-section-a">
+                <h4 class="footer-title-a">Contact</h4>
+                <p class="footer-text-a">info@bluecarbonchain.gov.in</p>
+                <p class="footer-text-a">+91 1800-BLUE-CARBON</p>
+                <div class="social-a">
+                    <a href="#" class="footer-link-a">Twitter</a> |
+                    <a href="#" class="footer-link-a">LinkedIn</a> |
+                    <a href="#" class="footer-link-a">GitHub</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom-a">
+            © 2025 BlueCarbonChain. A National Carbon Credit Registry Initiative.
+        </div>
+    </footer>
+
+</body>
+
+</html>

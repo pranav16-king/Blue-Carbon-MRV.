@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlueCarbonChain - Blockchain MRV for Blue Carbon Ecosystems</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/CSS/Ai_icon.css">
+    <link rel="stylesheet" href="/static/CSS/index.css">
+
+</head>
+
+<body class="min-h-screen">
+    <!-- Navigation -->
+    <nav class="gradient-bg text-white shadow-lg">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center logo space-x-2">
+                    <div class="w-10 h-10 logo bg-white rounded-full flex items-center justify-center">
+                        <i class="fas fa-leaf text-green-600 text-xl"></i>
+                    </div>
+                    <h1 class="text-2xl logo font-bold">BlueCarbonChain</h1>
+                </div>
+
+                <div class="hidden md:flex king ">
+                    <a href="/home1" class="nav-link">Home</a>
+                    <a href="#dashboard" class="nav-link">Dashboard</a>
+                    <a href="/news2" class="nav-link">News</a>
+
+                    <a href="#projects" class="nav-link">Projects</a>
+                    <a href="#credits" class="nav-link">Carbon Credits</a>
+                    <a href="/upload_data" class="nav-link">Data Upload</a>
+                    <a href="/calculator" class="nav-link">Carbon Calculator</a>
+                    <a href="/contact" class="nav-link">Contact</a>
+                    <div class="profile"> <img src="/static/images_index/profile_avatar.png" alt=" image unavailable">
+                        <div class="welcome_user"> Welcome, {{name}}
+                            <a href="/logout" class="nav-link logout">Logout</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                    <button
+                        class="bg-white text-blue-800 px-4 py-2 rounded-lg font-semibold hover:bg-blue-50 transition">
+                        <i class="fas fa-wallet mr-2"></i>Connect Wallet
+                    </button>
+                    <button class="md:hidden text-white">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blue Carbon Exchange — Trade</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+    <div class="container-b">
+        <header-b>
+            <div class="brand-b">
+                <div class="logo-b" aria-hidden="true"></div>
+                <div>
+                    <div class="title-b">Blue Carbon Exchange — Trade</div>
+                    <div class="badge-b">NCCR-verified marketplace • Demo UI</div>
+                </div>
+            </div>
+            <div class="status-b"><span class="pill-b">Live</span><span class="badge-b">Orders verified</span></div>
+        </header-b>
+
+        <div class="grid-b">
+            <section class="card-b">
+                <h2-b>Carbon Credit Price (₹/tCO₂e)</h2-b>
+                <div style="height:300px"><canvas id="priceChart"></canvas></div>
+                <div class="muted-b">Stable simulated pricing for demo.</div>
+            </section>
+
+            <section class="card-b">
+                <div>
+                    <div class="tabs-b">
+                        <button class="tab-btn-b active" data-tab="buy">Buy</button>
+                        <button class="tab-btn-b" data-tab="sell">Sell</button>
+                    </div>
+                </div>
+                <div id="buy" class="tab-b">
+                    <div class="trade-form-b">
+                        <div class="form-group-b"><label>Price</label><input id="buyPrice" type="number" value="950" />
+                        </div>
+                        <div class="form-group-b"><label>Quantity</label><input id="buyQty" type="number" value="100" />
+                        </div>
+                        <div class="form-group-b"><label>Total</label><input id="buyTotal" type="text" value="95,000"
+                                disabled /></div>
+                        <div class="cta-b">
+                            <button class="btn-b buy-b" id="placeBuy">Place Buy</button>
+                            <button class="btn-b secondary-b" id="saveBuy">E-Contract</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="sell" class="tab-b" style="display:none">
+                    <div class="trade-form-b">
+                        <div class="form-group-b"><label>Price</label><input id="sellPrice" type="number" value="955" />
+                        </div>
+                        <div class="form-group-b"><label>Quantity</label><input id="sellQty" type="number" value="80" />
+                        </div>
+                        <div class="form-group-b"><label>Total</label><input id="sellTotal" type="text" value="76,400"
+                                disabled /></div>
+                        <div class="cta-b">
+                            <button class="btn-b sell-b" id="placeSell">Place Sell</button>
+                            <button class="btn-b secondary-b" id="saveSell">E-Contract</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="bottom-panel">
+            <div class="bottom-card">
+                <h3>Order Book</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Price</th>
+                            <th>Qty</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody id="asksBody"></tbody>
+                </table>
+            </div>
+            <div class="bottom-card">
+                <h3>Recent Trades</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Price</th>
+                            <th>Qty</th>
+                            <th>Time</th>
+                        </tr>
+                    </thead>
+                    <tbody id="recentTrades"></tbody>
+                </table>
+            </div>
+            <div class="bottom-card news-card" id="newsSection">
+                <div style="    display: flex; gap: 215px;">
+                    <h3>Latest News</h3>
+                    <a href="/news2" class="news">View More</a>
+                </div>
+            </div>
+        </div>
+
+        <footer-b>© 2025 Blue Carbon Exchange • Demo UI</footer-b>
+    </div>
+
+
+
+
+    <!-- Dashboard Section -->
+    <section id="dashboard" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Ecosystem Dashboard</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                <div class="stats-card rounded-lg p-6 shadow-lg">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-600">Total Carbon Sequestered</p>
+                            <p class="text-3xl font-bold text-green-600">12,456 tCO₂</p>
+                        </div>
+                        <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-tree text-green-600 text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stats-card rounded-lg p-6 shadow-lg">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-600">Active Projects</p>
+                            <p class="text-3xl font-bold text-blue-600">47</p>
+                        </div>
+                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-project-diagram text-blue-600 text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stats-card rounded-lg p-6 shadow-lg">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-600">Carbon Credits Generated</p>
+                            <p class="text-3xl font-bold text-teal-600">8,921</p>
+                        </div>
+                        <div class="w-12 h-12 bg-teal-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-coins text-teal-600 text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stats-card rounded-lg p-6 shadow-lg">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-600">Community Partners</p>
+                            <p class="text-3xl font-bold text-purple-600">132</p>
+                        </div>
+                        <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-users text-purple-600 text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Map Visualization -->
+            <div class="bg-gray-50 rounded-2xl p-6 shadow-lg mb-12">
+                <h3 class="text-2xl font-bold mb-6 text-gray-800">Live Project Map</h3>
+                <div class="relative h-96 rounded-xl overflow-hidden">
+                    <img src="/static/images_index/map.png"
+                        alt="Interactive map of India showing blue carbon project locations along coastal regions with mangrove and seagrass restoration sites"
+                        class="w-full h-full object-cover" />
+                    <div class="absolute top-4 right-4 bg-white p-4 rounded-lg shadow-md">
+                        <div class="flex items-center space-x-4">
+                            <div class="flex items-center">
+                                <div class="w-4 h-4 bg-green-500 rounded-full mr-2"></div>
+                                <span>Mangroves</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-4 h-4 bg-blue-500 rounded-full mr-2"></div>
+                                <span>Seagrass</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-4 h-4 bg-teal-500 rounded-full mr-2"></div>
+                                <span>Salt Marshes</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Featured Restoration Projects</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-lg">
+                    <div class="h-48 overflow-hidden">
+                        <img src="/static/images_index/farm.png"
+                            alt="Lush mangrove forest restoration project in Sundarbans with local community members monitoring growth"
+                            class="w-full h-full object-cover" />
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <span
+                                class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Active</span>
+                            <span class="text-blue-600 font-semibold">Sundarbans, WB</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Sundarbans Mangrove Restoration</h3>
+                        <p class="text-gray-600 mb-4">Community-led mangrove plantation with drone monitoring and
+                            blockchain verification.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500">1200 tCO₂ sequestered</span>
+                            <button
+                                class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-blue-700 transition">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-lg">
+                    <div class="h-48 overflow-hidden">
+                        <img src="/static/images_index/farm2.png"
+                            alt="Seagrass meadow restoration in Gulf of Mannar with scientific research team collecting data"
+                            class="w-full h-full object-cover" />
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <span
+                                class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Research</span>
+                            <span class="text-blue-600 font-semibold">Gulf of Mannar, TN</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Mannar Seagrass Conservation</h3>
+                        <p class="text-gray-600 mb-4">Scientific research and community engagement for seagrass
+                            ecosystem preservation.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500">850 tCO₂ sequestered</span>
+                            <button
+                                class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-blue-700 transition">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-lg">
+                    <div class="h-48 overflow-hidden">
+                        <img src="/static/images_index/water.png"
+                            alt="Coastal salt marsh restoration in Chilika Lake with biodiversity monitoring stations"
+                            class="w-full h-full object-cover" />
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <span
+                                class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">Planning</span>
+                            <span class="text-blue-600 font-semibold">Chilika Lake, OD</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Chilika Salt Marsh Initiative</h3>
+                        <p class="text-gray-600 mb-4">Integrated approach combining traditional knowledge with modern
+                            technology.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500">Planning Phase</span>
+                            <button
+                                class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-blue-700 transition">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Carbon Credits Section -->
+    <section id="credits" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Tokenized Carbon Credits</h2>
+
+            <div class="blockchain-animation rounded-2xl p-8 text-white mb-12">
+                <div class="text-center">
+                    <h3 class="text-2xl font-bold mb-4">Blockchain-Verified Carbon Credits</h3>
+                    <p class="mb-6">Every credit is immutably recorded on the blockchain with full transparency</p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="data-point">
+                            <i class="fas fa-shield-alt text-3xl mb-3 text-green-500"></i>
+                            <h4 class="font-bold mb-2">Immutable Records</h4>
+                            <p class="text-sm">All data permanently stored on blockchain</p>
+                        </div>
+                        <div class="data-point">
+                            <i class="fas fa-eye text-3xl mb-3 text-blue-500"></i>
+                            <h4 class="font-bold mb-2">Full Transparency</h4>
+                            <p class="text-sm">Complete audit trail for every credit</p>
+                        </div>
+                        <div class="data-point">
+                            <i class="fas fa-sync-alt text-3xl mb-3 text-teal-500"></i>
+                            <h4 class="font-bold mb-2">Real-time Updates</h4>
+                            <p class="text-sm">Instant verification and issuance</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-gray-50 rounded-2xl p-6">
+                    <h3 class="text-xl font-bold mb-4">Credit Marketplace</h3>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center p-4 bg-white rounded-lg">
+                            <div>
+                                <h4 class="font-semibold">Sundarbans Mangrove Credits</h4>
+                                <p class="text-sm text-gray-600">Verified: 12 Oct 2024</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="font-bold text-green-600">₹1,250</p>
+                                <p class="text-sm">per tCO₂</p>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center p-4 bg-white rounded-lg">
+                            <div>
+                                <h4 class="font-semibold">Mannar Seagrass Credits</h4>
+                                <p class="text-sm text-gray-600">Verified: 08 Oct 2024</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="font-bold text-green-600">₹1,400</p>
+                                <p class="text-sm">per tCO₂</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 rounded-2xl p-6">
+                    <h3 class="text-xl font-bold mb-4">Recent Transactions</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center p-3 bg-white rounded-lg">
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                                    <i class="fas fa-check text-green-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium">Tata Steel Purchase</p>
+                                    <p class="text-xs text-gray-600">50 credits @ ₹1,250</p>
+                                </div>
+                            </div>
+                            <span class="text-green-600 font-bold">₹62,500</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-white rounded-lg">
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                                    <i class="fas fa-check text-green-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium">Infosys Carbon Offset</p>
+                                    <p class="text-xs text-gray-600">75 credits @ ₹1,400</p>
+                                </div>
+                            </div>
+                            <span class="text-green-600 font-bold">₹1,05,000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Chatbot -->
+    <div class="ai">
+        <button class="ai-btn"><a href="/ai"><img src="/static/AI_images/AI.png" alt="image unavialabe"></a></button>
+    </div>
+    <!-- Footer -->
+    <footer class="gradient-bg text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h4 class="text-lg font-bold mb-4">BlueCarbonChain</h4>
+                    <p class="text-sm opacity-80">Blockchain-powered MRV for India's blue carbon ecosystems</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="opacity-80 hover:opacity-100 transition">About Us</a></li>
+                        <li><a href="#" class="opacity-80 hover:opacity-100 transition">Documentation</a></li>
+                        <li><a href="#" class="opacity-80 hover:opacity-100 transition">API Access</a></li>
+                        <li><a href="#" class="opacity-80 hover:opacity-100 transition">Support</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Partners</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="opacity-80 hover:opacity-100 transition">NCCR India</a></li>
+                        <li><a href="#" class="opacity-80 hover:opacity-100 transition">State Governments</a></li>
+                        <li><a href="#" class="opacity-80 hover:opacity-100 transition">Research Institutes</a></li>
+                        <li><a href="#" class="opacity-80 hover:opacity-100 transition">NGO Partners</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Contact</h4>
+                    <div class="space-y-2 text-sm">
+                        <p class="opacity-80">info@bluecarbonchain.gov.in</p>
+                        <p class="opacity-80">+91 1800-BLUE-CARBON</p>
+                        <div class="flex space-x-4 pt-2">
+                            <a href="#" class="opacity-80 hover:opacity-100 transition"><i
+                                    class="fab fa-twitter"></i></a>
+                            <a href="#" class="opacity-80 hover:opacity-100 transition"><i
+                                    class="fab fa-linkedin"></i></a>
+                            <a href="#" class="opacity-80 hover:opacity-100 transition"><i
+                                    class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-white/20 mt-8 pt-8 text-center">
+                <p class="text-sm opacity-70">© 2024 BlueCarbonChain. A National Carbon Credit Registry Initiative.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/static/JS/index.js"></script>
+</body>
+
+</html>

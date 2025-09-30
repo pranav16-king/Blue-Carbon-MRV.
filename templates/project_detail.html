@@ -1,0 +1,141 @@
+{% extends "base2.html" %}
+{% block title %}Admin Dashboard{% endblock %}
+
+<body>
+
+  {% block content %}
+  <div class="w-[95%] mx-auto p-7 space-y-7 bg-gradient-to-br from-sky-100 to-white text-gray-900">
+    <a href="/" class="underline text-sky-700">← Back</a>
+
+    <!-- Header -->
+    <div class="flex items-center justify-between bg-white p-7 rounded-xl shadow">
+      <div>
+        <h1 class="text-3xl font-bold text-sky-800">{{ p['name'] }}</h1>
+        <div class="text-sm text-gray-600">
+          ID: {{ p['project_id'] }} • Owner: {{ p['owner'] }}
+        </div>
+      </div>
+      <form method="post" action="/projects/{{p['project_id']}}/status" class="flex gap-3">
+        <select name="status" class="bg-white border border-sky-200 p-3 rounded">
+          {% for s in ['Proposed','Active','Verified','Issued','Suspended'] %}
+          <option value="{{s}}" {% if s==p['status'] %}selected{% endif %}>{{s}}</option>
+          {% endfor %}
+        </select>
+        <button class="px-4 py-3 bg-sky-600 text-white rounded hover:bg-sky-700">Update</button>
+      </form>
+    </div>
+
+    <!-- Monitoring & Verification -->
+    <section class="grid md:grid-cols-2 gap-7">
+      <div class="bg-white p-7 rounded-xl shadow space-y-4">
+        <h2 class="text-xl font-semibold text-sky-800">Add Monitoring Event</h2>
+        <form method="post" action="/projects/{{p['project_id']}}/monitoring/upload" enctype="multipart/form-data"
+          class="grid gap-3">
+          <input type="datetime-local" name="ts" class="bg-sky-50 border border-sky-200 p-3 rounded">
+          <input name="plot_id" placeholder="Plot ID" class="bg-sky-50 border border-sky-200 p-3 rounded">
+          <div class="grid grid-cols-2 gap-3">
+            <input name="species" placeholder="Species" class="bg-sky-50 border border-sky-200 p-3 rounded">
+            <input name="survival_rate" placeholder="Survival Rate (0-1)"
+              class="bg-sky-50 border border-sky-200 p-3 rounded">
+          </div>
+          <div class="grid grid-cols-3 gap-3">
+            <input name="dbh_cm" placeholder="Tree Diamenter (cm)" class="bg-sky-50 border border-sky-200 p-3 rounded">
+            <input name="height_m" placeholder="Height (m)" class="bg-sky-50 border border-sky-200 p-3 rounded">
+            <input type="file" name="file" class="bg-sky-50 border border-sky-200 p-3 rounded">
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <input name="lat" placeholder="Latitude " class="bg-sky-50 border border-sky-200 p-3 rounded">
+            <input name="lon" placeholder="Longitude" class="bg-sky-50 border border-sky-200 p-3 rounded">
+          </div>
+          <button class="px-4 py-3 bg-emerald-600 text-white rounded hover:bg-emerald-700">Upload</button>
+        </form>
+      </div>
+
+      <div class="bg-white p-7 rounded-xl shadow space-y-4">
+        <h2 class="text-xl font-semibold text-sky-800">Create Verification</h2>
+        <form method="post" action="/projects/{{p['project_id']}}/verify" class="grid gap-3">
+          <div class="grid grid-cols-2 gap-3">
+            <input name="monitoringStart" placeholder="2024-01-01" class="bg-sky-50 border border-sky-200 p-3 rounded">
+            <input name="monitoringEnd" placeholder="2025-01-01" class="bg-sky-50 border border-sky-200 p-3 rounded">
+          </div>
+          <div class="grid grid-cols-3 gap-3">
+            <input name="area_ha" placeholder="Area (ha)" class="bg-sky-50 border border-sky-200 p-3 rounded">
+            <input name="canopy_cover" placeholder="Canopy (0-1)" class="bg-sky-50 border border-sky-200 p-3 rounded">
+            <input name="methodology" placeholder="Method" class="bg-sky-50 border border-sky-200 p-3 rounded">
+          </div>
+          <div class="border-l-4 border-blue-500 bg-blue-50 rounded shadow">
+            <h1 class="text-xl  mt-2 p-1 font-bold text-blue-700 mb-2">Note</h1>
+            <p class="text-gray-700">Canopy (0–1) = amount of tree cover (0 = none, 1 = fully covered).</p>
+          </div>
+
+          <button class="px-4 py-3 bg-sky-600 text-white rounded hover:bg-sky-700">Verify</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Events & Verifications -->
+    <section class="grid md:grid-cols-2 gap-7">
+      <div class="bg-white p-7 rounded-xl shadow">
+        <h3 class="font-semibold mb-3 text-sky-800">Monitoring Events</h3>
+        <div class="space-y-3 max-h-64 overflow-auto">
+          {% for e in events %}
+          <div class="p-3 rounded bg-sky-50 border border-sky-200 text-sm">
+            {{ e['ts'] }} • Plot {{ e['plot_id'] or '-' }} • {{ e['species'] or '-' }} • sha256: {{ e['sha256'] or '-'
+            }}
+          </div>
+          {% else %}
+          <div class="text-gray-600 text-sm">No events yet.</div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="bg-white p-7 rounded-xl shadow">
+        <h3 class="font-semibold mb-3 text-sky-800">Verifications</h3>
+        <div class="space-y-3 max-h-64 overflow-auto">
+          {% for v in verifications %}
+          <div class="p-3 rounded bg-sky-50 border border-sky-200 text-sm">
+            {{ v['vintage_year'] }} • tCO₂e: {{ v['tco2e'] }} • CID: {{ v['package_cid'] }}
+          </div>
+          {% else %}
+          <div class="text-gray-600 text-sm">No verifications yet.</div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <!-- Credits -->
+    <section class="bg-white p-7 rounded-xl shadow space-y-4">
+      <h2 class="text-xl font-semibold text-sky-800">Issue / Retire Credits</h2>
+      <form method="post" action="/projects/{{p['project_id']}}/issue" class="grid grid-cols-4 gap-3">
+        <input name="vintage_year" placeholder="Vintage" class="bg-sky-50 border border-sky-200 p-3 rounded">
+        <input name="method" placeholder="Method" class="bg-sky-50 border border-sky-200 p-3 rounded">
+        <input name="amount" placeholder="Amount (tCO₂e)" class="bg-sky-50 border border-sky-200 p-3 rounded">
+        <button class="px-4 py-3 bg-purple-600 text-white rounded hover:bg-purple-700">Issue</button>
+      </form>
+      <div class="space-y-3">
+        {% for c in credits %}
+        <div class="flex items-center justify-between bg-sky-50 border border-sky-200 p-3 rounded text-sm">
+          <div>
+            ID {{ c['id'] }} • {{ c['vintage_year'] }} • {{ c['method'] }} • {{ c['amount'] }} t •
+            {% if c['retired']==1 %}
+            <span class="text-emerald-600 font-semibold">Retired</span>
+            {% else %}
+            <span class="text-yellow-600 font-semibold">Active</span>
+            {% endif %}
+          </div>
+          {% if c['retired']==0 %}
+          <form method="post" action="/credits/{{c['id']}}/retire" class="flex gap-2">
+            <input name="beneficiary" placeholder="Beneficiary" class="bg-white border border-sky-200 p-2 rounded">
+            <input name="purpose" placeholder="Purpose" class="bg-white border border-sky-200 p-2 rounded">
+            <button class="px-3 py-2 bg-rose-600 text-white rounded hover:bg-rose-700">Retire</button>
+          </form>
+          {% endif %}
+        </div>
+        {% else %}
+        <div class="text-gray-600 text-sm">No credits issued.</div>
+        {% endfor %}
+      </div>
+    </section>
+  </div>
+  {% endblock %}
+</body>

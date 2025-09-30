@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block contain %}
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/CSS/upload.css">
+<div class="body">
+    <div class="container">
+        <h2>Blue Carbon Image Scan</h2>
+        <!-- This posts to /upload; backend will: scan + generate report + add to Admin Pending -->
+        <form method="post" enctype="multipart/form-data" action="/upload">
+            <label for="full_name">Enter Your Full Name </label>
+            <input type="text" name="full_name" id="full_name" placeholder="Enter Your Full Name" required>
+            <label for="filename"> Name your Project</label>
+            <input type="text" name="filename" id="filename" placeholder="My Tree Image" required>
+            <label for="file">Select Image</label>
+            <input type="file" name="file" id="file" accept="image/*" required>
+            <input type="submit" value="Upload & Scan">
+        </form>
+    </div>
+</div>
+{% endblock contain %}

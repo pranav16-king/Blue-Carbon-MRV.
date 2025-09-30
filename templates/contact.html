@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+
+<body class="bg-white text-sky-900 min-h-screen flex flex-col">
+  {% block contain %}
+  <script src="https://cdn.tailwindcss.com"></script>
+
+
+
+  <!-- Main -->
+  <main class="flex-1 max-w-5xl mx-auto p-6">
+    <h2 class="text-3xl font-bold mb-4 text-sky-700">Contact & Onboarding</h2>
+    <p class="text-sky-600 mb-6">Join the BlueCarbon MRV platform for carbon trading, credit issuance, and monitoring.
+    </p>
+
+    <form method="POST" class="space-y-8 bg-sky-50 p-8 rounded-2xl shadow-lg border border-sky-200">
+
+      <!-- Section: Basic Info -->
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <label class="block font-semibold text-sky-800">Full Name <span class="text-red-500">*</span></label>
+          <input type="text" name="fullName" required
+            class="w-full p-3 rounded-lg bg-white border border-sky-300 text-sky-900 focus:ring-2 focus:ring-sky-400" />
+        </div>
+        <div>
+          <label class="block font-semibold text-sky-800">Email <span class="text-red-500">*</span></label>
+          <input type="email" name="email" required
+            class="w-full p-3 rounded-lg bg-white border border-sky-300 text-sky-900 focus:ring-2 focus:ring-sky-400" />
+        </div>
+      </div>
+
+      <!-- Section: Organisation -->
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <label class="block font-semibold text-sky-800">Organisation / Entity</label>
+          <input type="text" name="organisation"
+            class="w-full p-3 rounded-lg bg-white border border-sky-300 text-sky-900 focus:ring-2 focus:ring-sky-400" />
+        </div>
+        <div>
+          <label class="block font-semibold text-sky-800">Role in Carbon Market <span
+              class="text-red-500">*</span></label>
+          <select name="role" required
+            class="w-full p-3 rounded-lg bg-white border border-sky-300 text-sky-900 focus:ring-2 focus:ring-sky-400">
+            <option value="">Select</option>
+            <option>Carbon Project Developer</option>
+            <option>Credit Buyer / Corporate</option>
+            <option>NGO / Civil Society</option>
+            <option>Regulator / Government</option>
+            <option>Community Representative</option>
+            <option>Verifier / Auditor</option>
+            <option>Investor</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Section: Carbon Project -->
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <label class="block font-semibold text-sky-800">Project Type</label>
+          <select name="projectType"
+            class="w-full p-3 rounded-lg bg-white border border-sky-300 text-sky-900 focus:ring-2 focus:ring-sky-400">
+            <option value="">Select</option>
+            <option>Mangroves</option>
+            <option>Seagrass</option>
+            <option>Salt Marsh</option>
+            <option>Afforestation</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div>
+          <label class="block font-semibold text-sky-800">Registry Preference</label>
+          <select name="registry"
+            class="w-full p-3 rounded-lg bg-white border border-sky-300 text-sky-900 focus:ring-2 focus:ring-sky-400">
+            <option value="">Select</option>
+            <option>Blockchain-based Registry</option>
+            <option>Voluntary Market (e.g., VERRA, Gold Standard)</option>
+            <option>National Registry (India)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Section: Trading Interest -->
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <label class="block font-semibold text-sky-800">Credits Interested In</label>
+          <select name="credits"
+            class="w-full p-3 rounded-lg bg-white border border-sky-300 text-sky-900 focus:ring-2 focus:ring-sky-400">
+            <option>Blue Carbon Credits</option>
+            <option>REDD+ Credits</option>
+            <option>Renewable Energy Credits</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div>
+          <label class="block font-semibold text-sky-800">Volume Expected (in tCO₂e)</label>
+          <input type="number" name="volume" placeholder="e.g., 1000"
+            class="w-full p-3 rounded-lg bg-white border border-sky-300 text-sky-900 focus:ring-2 focus:ring-sky-400" />
+        </div>
+      </div>
+
+      <!-- Section: Additional Info -->
+      <div>
+        <label class="block font-semibold text-sky-800">Verification Requirement</label>
+        <select name="verification"
+          class="w-full p-3 rounded-lg bg-white border border-sky-300 text-sky-900 focus:ring-2 focus:ring-sky-400">
+          <option value="">Select</option>
+          <option>Third-Party Verified</option>
+          <option>Blockchain Auto-Verification</option>
+          <option>Government Approval Needed</option>
+        </select>
+      </div>
+
+      <!-- Subject & Message -->
+      <div>
+        <label class="block font-semibold text-sky-800">Subject <span class="text-red-500">*</span></label>
+        <input type="text" name="subject" required
+          class="w-full p-3 rounded-lg bg-white border border-sky-300 text-sky-900 focus:ring-2 focus:ring-sky-400" />
+      </div>
+
+      <div>
+        <label class="block font-semibold text-sky-800">Message <span class="text-red-500">*</span></label>
+        <textarea name="message" rows="5" required
+          class="w-full p-3 rounded-lg bg-white border border-sky-300 text-sky-900 focus:ring-2 focus:ring-sky-400"></textarea>
+      </div>
+
+      <!-- Buttons -->
+      <div class="flex gap-4">
+        <button type="submit" class="bg-sky-600 hover:bg-sky-500 text-white font-bold px-6 py-3 rounded-xl shadow-lg">🚀
+          Submit</button>
+        <button type="reset"
+          class="bg-sky-300 hover:bg-sky-200 text-sky-800 font-bold px-6 py-3 rounded-xl shadow-lg">🔄 Reset</button>
+      </div>
+    </form>
+  </main>
+
+  {% endblock contain %}
+
+</body>

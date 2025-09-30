@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+<body>
+
+
+    {% block contain %}
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+
+
+    <!-- Calculator Section -->
+    <section id="calculator" class="max-w-3xl mx-auto my-12 p-8 bg-white rounded-2xl shadow-lg">
+        <h1 class="text-3xl font-bold text-center text-blue-800 mb-6">🌱 Blue Carbon MRV Calculator</h1>
+
+        <!-- Calculation Type -->
+        <label class="block font-semibold mb-2" for="calcType">Select Calculation Type:</label>
+        <select id="calcType" class="w-full p-3 mb-6 border rounded-lg" onchange="changeCalcType()">
+            <option value="yearlyCredits">Yearly Carbon Credits & O₂ Released</option>
+            <option value="co2Released">CO₂ Released</option>
+            <option value="requiredTrees">Required Trees for Target CO₂</option>
+            <option value="tokenizedCredits">Tokenized Credits</option>
+            <option value="costAnalysis">Cost Analysis</option>
+            <option value="mrvScore">MRV Verification Score</option>
+        </select>
+
+        <!-- Form Inputs -->
+        <form id="carbonForm" class="space-y-4">
+            <input type="number" id="trees" placeholder="Number of Trees Planted" class="w-full p-3 border rounded-lg">
+            <input type="number" id="area" placeholder="Area Restored (hectares)" class="w-full p-3 border rounded-lg">
+            <select id="ecosystem" class="w-full p-3 border rounded-lg">
+                <option value="mangrove">Mangrove</option>
+                <option value="seagrass">Seagrass</option>
+                <option value="saltmarsh">Saltmarsh</option>
+                <option value="mudflat">Mudflat</option>
+                <option value="coastalForest">Coastal Forest</option>
+            </select>
+            <input type="number" id="survivalRate" value="90" placeholder="Tree Survival Rate (%)"
+                class="w-full p-3 border rounded-lg">
+            <input type="number" id="years" value="5" placeholder="Project Duration (years)"
+                class="w-full p-3 border rounded-lg">
+            <input type="number" id="treeCost" value="0" placeholder="Cost per Tree (₹)"
+                class="w-full p-3 border rounded-lg">
+            <input type="number" id="maintenanceCost" value="0" placeholder="Maintenance Cost per Year (₹)"
+                class="w-full p-3 border rounded-lg">
+            <input type="number" id="govIncentive" value="0" placeholder="Government Incentives (₹)"
+                class="w-full p-3 border rounded-lg">
+            <select id="droneData" class="w-full p-3 border rounded-lg">
+                <option value="yes">Drone Verified Data: Yes</option>
+                <option value="no">Drone Verified Data: No</option>
+            </select>
+            <select id="community" class="w-full p-3 border rounded-lg">
+                <option value="high">Community Participation: High</option>
+                <option value="medium">Community Participation: Medium</option>
+                <option value="low">Community Participation: Low</option>
+            </select>
+            <button type="button" onclick="calculateMRV()"
+                class="w-full bg-blue-700 text-white p-4 rounded-lg font-semibold hover:bg-blue-800 transition">Calculate</button>
+        </form>
+
+        <div id="result"
+            class="mt-6 p-6 bg-green-100 rounded-xl shadow-lg text-blue-900 font-semibold transition-opacity"></div>
+    </section>
+
+
+
+
+    <script src="/static/JS/calculator.js"></script>
+    {% endblock contain %}
+
+</body>

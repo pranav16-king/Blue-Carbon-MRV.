@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Thank You - BlueCarbon MRV</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-white text-sky-900 min-h-screen flex flex-col justify-center items-center">
+  <div class="bg-sky-50 p-8 rounded-2xl shadow-lg max-w-lg text-center border border-sky-200">
+    <h1 class="text-3xl font-bold text-sky-700 mb-4">Thank You 🎉</h1>
+    <p class="mb-2">Hello <span class="font-semibold text-sky-900">{{ name }}</span>,</p>
+    <p class="mb-2">We’ve received your submission.</p>
+
+    <div class="bg-white border border-sky-300 rounded-lg p-4 text-left mt-4">
+      <p class="text-sky-800"><strong>Subject:</strong> {{ subject }}</p>
+      <p class="text-sky-800"><strong>Message:</strong> {{ message }}</p>
+    </div>
+
+    <div class="flex gap-4 mt-6 justify-center">
+      <a href="/home1" class="bg-sky-600 hover:bg-sky-500 text-white font-bold px-4 py-2 rounded-lg shadow-md">🏠
+        Home</a>
+      <a href="/contact" class="bg-sky-300 hover:bg-sky-200 text-sky-900 font-bold px-4 py-2 rounded-lg shadow-md">➕
+        Submit Another</a>
+    </div>
+  </div>
+</body>
+
+</html>

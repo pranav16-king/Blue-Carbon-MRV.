@@ -1,0 +1,75 @@
+/* AI Button - Enhanced with animations */
+.ai {
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  z-index: 9999;
+}
+
+.ai-btn {
+  border: none;
+  border-radius: 50%;
+  padding: 14.4px;
+  /* 20% bigger than 12px */
+  background: linear-gradient(90deg, #56CCF2 0%, #2F80ED 100%);
+  box-shadow: 0 4px 16px rgba(47, 128, 237, 0.2);
+  cursor: pointer;
+  animation: ai-pulse 1.8s infinite, ai-bounce 2.5s infinite;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ai-btn:hover {
+  box-shadow: 0 8px 32px rgba(47, 128, 237, 0.4);
+  transform: scale(1.12) rotate(-5deg);
+}
+
+.ai-btn img {
+  width: 72px;
+  /* 20% bigger than 60px */
+  height: 72px;
+  border-radius: 50%;
+  animation: ai-rotate 4s linear infinite;
+}
+
+/* Pulse effect */
+@keyframes ai-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(47, 128, 237, 0.3);
+  }
+
+  70% {
+    box-shadow: 0 0 0 21.6px rgba(47, 128, 237, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(47, 128, 237, 0.3);
+  }
+}
+
+/* Gentle bounce */
+@keyframes ai-bounce {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+/* Slow rotation of icon */
+@keyframes ai-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(10deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}

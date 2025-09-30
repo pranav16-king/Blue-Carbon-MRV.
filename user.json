@@ -1,0 +1,62 @@
+{
+    "users": [
+        {
+            "username": "Pranav",
+            "password": "Pranav",
+            "email": "pranav@gmail.com",
+            "choices":"Admin"
+        },
+        {
+            "username": "Pranav",
+            "password": "Pranav@123",
+            "email": "pranav@gmail.com",
+            "choices":"Admin"
+        },
+        {
+             "username": "Piyush",
+            "password": "Piyush",
+            "choices":"Admin"
+        },
+        {
+             "username": "Onkar",
+            "password": "Onkar",
+            "choices":"Admin"
+        },
+        {
+             "username": "Jaya",
+            "password": "Jaya",
+            "choices":"Admin"
+        },
+        {
+             "username": "Sakshi",
+            "password": "Sakshi",
+            "choices":"Admin"
+        },
+       
+        {
+            "username": "ram",
+            "password": "ram",
+            "email": "pranavkhaire53@gmail.com"
+        },
+        {
+            "username": "om",
+            "password": "om",
+            "email": "ghugeom28@gemail.com"
+        },
+        {
+            "username": "Pranav",
+            "password": "Pranav",
+            "email": "pranavkhaire@gmail.com"
+        },
+        {
+            "username": "om",
+            "password": "omghuge",
+            "email": "ghugeom28@gemail.com"
+        },
+        {
+            "username": "Pranav",
+            "password": "pRANAV",
+            "email": "pranavkhaire53@gmail.com"
+        }
+    ]
+}

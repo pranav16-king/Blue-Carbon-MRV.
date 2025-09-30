@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_f7be27ee19ae274163280b074de720c0 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.Default.css"/>
+    <script src="https://cdn.jsdelivr.net/gh/python-visualization/folium@main/folium/templates/leaflet_heat.min.js"></script>
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css"/>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_f7be27ee19ae274163280b074de720c0" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_f7be27ee19ae274163280b074de720c0 = L.map(
+                "map_f7be27ee19ae274163280b074de720c0",
+                {
+                    center: [20.5937, 78.9629],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 5,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_fdf3f4705842c5d92a39f8d5a93c4409 = L.tileLayer(
+                "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "Tiles \u00a9 Esri \u2014 Source: Esri, Maxar, Earthstar Geographics, and the GIS User Community",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_fdf3f4705842c5d92a39f8d5a93c4409.addTo(map_f7be27ee19ae274163280b074de720c0);
+        
+    
+            var marker_cluster_d726dd02835edf8b5c4c0ecb555c4488 = L.markerClusterGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_20015d9807eff02342b96b75e99c43f0 = L.circleMarker(
+                [21.6417, 72.2097],
+                {"bubblingMouseEvents": true, "color": "darkgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.2, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_d726dd02835edf8b5c4c0ecb555c4488);
+        
+    
+        var popup_a4142f650eb4509b285ac207ceca1662 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_0724f4cbce2db05ad083eda575a47dac = $(`<div id="html_0724f4cbce2db05ad083eda575a47dac" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px;">         <b>Mangrove Restoration - Gujarat</b><br>         <b>Carbon Stored:</b> 1200 tons<br>         <b>Year:</b> 2021<br>         <b>Status:</b> Verified<br>     </div>     </div>`)[0];
+                popup_a4142f650eb4509b285ac207ceca1662.setContent(html_0724f4cbce2db05ad083eda575a47dac);
+            
+        
+
+        circle_marker_20015d9807eff02342b96b75e99c43f0.bindPopup(popup_a4142f650eb4509b285ac207ceca1662)
+        ;
+
+        
+    
+    
+            var circle_marker_44cfe5013ee32da825b65fe24e3fc0a3 = L.circleMarker(
+                [10.78, 79.13],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.85, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_d726dd02835edf8b5c4c0ecb555c4488);
+        
+    
+        var popup_9fe49558266ca26ae3f19b8b5eb0146d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_452d29904b7bf9ba4d15ad3fc7428397 = $(`<div id="html_452d29904b7bf9ba4d15ad3fc7428397" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px;">         <b>Seagrass Plantation - Tamil Nadu</b><br>         <b>Carbon Stored:</b> 850 tons<br>         <b>Year:</b> 2022<br>         <b>Status:</b> Pending<br>     </div>     </div>`)[0];
+                popup_9fe49558266ca26ae3f19b8b5eb0146d.setContent(html_452d29904b7bf9ba4d15ad3fc7428397);
+            
+        
+
+        circle_marker_44cfe5013ee32da825b65fe24e3fc0a3.bindPopup(popup_9fe49558266ca26ae3f19b8b5eb0146d)
+        ;
+
+        
+    
+    
+            var circle_marker_a8965a3407ca6581b90cb76a9c368e58 = L.circleMarker(
+                [22.0, 88.0],
+                {"bubblingMouseEvents": true, "color": "darkgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.5, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_d726dd02835edf8b5c4c0ecb555c4488);
+        
+    
+        var popup_714bc9459cae41c0ed4eedfb12c01339 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_7238a7ecc2bf8e1fffd130864786cf3f = $(`<div id="html_7238a7ecc2bf8e1fffd130864786cf3f" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px;">         <b>Saltmarsh Revival - Sundarbans</b><br>         <b>Carbon Stored:</b> 2500 tons<br>         <b>Year:</b> 2019<br>         <b>Status:</b> Verified<br>     </div>     </div>`)[0];
+                popup_714bc9459cae41c0ed4eedfb12c01339.setContent(html_7238a7ecc2bf8e1fffd130864786cf3f);
+            
+        
+
+        circle_marker_a8965a3407ca6581b90cb76a9c368e58.bindPopup(popup_714bc9459cae41c0ed4eedfb12c01339)
+        ;
+
+        
+    
+    
+            var circle_marker_152b550ab655df1a49a3a694618f8f27 = L.circleMarker(
+                [9.9312, 76.2673],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.6, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_d726dd02835edf8b5c4c0ecb555c4488);
+        
+    
+        var popup_d6a7dda4556fad8af0474170d9649123 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_af367f573af0434b16f9ca76b51608b8 = $(`<div id="html_af367f573af0434b16f9ca76b51608b8" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px;">         <b>Community Plantation - Kerala</b><br>         <b>Carbon Stored:</b> 600 tons<br>         <b>Year:</b> 2023<br>         <b>Status:</b> Ongoing<br>     </div>     </div>`)[0];
+                popup_d6a7dda4556fad8af0474170d9649123.setContent(html_af367f573af0434b16f9ca76b51608b8);
+            
+        
+
+        circle_marker_152b550ab655df1a49a3a694618f8f27.bindPopup(popup_d6a7dda4556fad8af0474170d9649123)
+        ;
+
+        
+    
+    
+            var circle_marker_fc16a0764bce5974eb36f3aff862d89e = L.circleMarker(
+                [18.97, 72.82],
+                {"bubblingMouseEvents": true, "color": "darkgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.5, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_d726dd02835edf8b5c4c0ecb555c4488);
+        
+    
+        var popup_776fa92a860d96471b039a26fb1e2e36 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5829a924eec17e8f5b4f2e18dfef216f = $(`<div id="html_5829a924eec17e8f5b4f2e18dfef216f" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px;">         <b>Mangrove Belt - Maharashtra</b><br>         <b>Carbon Stored:</b> 1500 tons<br>         <b>Year:</b> 2020<br>         <b>Status:</b> Verified<br>     </div>     </div>`)[0];
+                popup_776fa92a860d96471b039a26fb1e2e36.setContent(html_5829a924eec17e8f5b4f2e18dfef216f);
+            
+        
+
+        circle_marker_fc16a0764bce5974eb36f3aff862d89e.bindPopup(popup_776fa92a860d96471b039a26fb1e2e36)
+        ;
+
+        
+    
+    
+            var circle_marker_553b5c5fd5f5830796d4fb0fd4eca0d6 = L.circleMarker(
+                [19.8773, 75.3391],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.9, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_d726dd02835edf8b5c4c0ecb555c4488);
+        
+    
+        var popup_66e8a4672eaddd76d7105e8a69f06959 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_3c77bab8c1b594a11ee2ce8f4abf5188 = $(`<div id="html_3c77bab8c1b594a11ee2ce8f4abf5188" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px;">         <b>Community Plantation - Aurangabad Satara Parisar</b><br>         <b>Carbon Stored:</b> 900 tons<br>         <b>Year:</b> 2023<br>         <b>Status:</b> Ongoing<br>     </div>     </div>`)[0];
+                popup_66e8a4672eaddd76d7105e8a69f06959.setContent(html_3c77bab8c1b594a11ee2ce8f4abf5188);
+            
+        
+
+        circle_marker_553b5c5fd5f5830796d4fb0fd4eca0d6.bindPopup(popup_66e8a4672eaddd76d7105e8a69f06959)
+        ;
+
+        
+    
+    
+            marker_cluster_d726dd02835edf8b5c4c0ecb555c4488.addTo(map_f7be27ee19ae274163280b074de720c0);
+        
+    
+            var heat_map_dfd28b649ada8f5273e044c455f722f3 = L.heatLayer(
+                [[21.6417, 72.2097, 1200], [10.78, 79.13, 850], [22.0, 88.0, 2500], [9.9312, 76.2673, 600], [18.97, 72.82, 1500], [19.8773, 75.3391, 900]],
+                {
+  "minOpacity": 0.5,
+  "maxZoom": 10,
+  "radius": 30,
+  "blur": 15,
+}
+            );
+        
+    
+            heat_map_dfd28b649ada8f5273e044c455f722f3.addTo(map_f7be27ee19ae274163280b074de720c0);
+        
+    
+            var tile_layer_a828df5a61e014b103dae5df67dcdf9f = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_a828df5a61e014b103dae5df67dcdf9f.addTo(map_f7be27ee19ae274163280b074de720c0);
+        
+    
+            var tile_layer_86eb9fb46a13b41691b64f52cfe214f2 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_86eb9fb46a13b41691b64f52cfe214f2.addTo(map_f7be27ee19ae274163280b074de720c0);
+        
+    
+
+            var geocoderOpts_geocoder_b913579655dbdde203ebe907033a6dfd = {
+  "collapsed": false,
+  "position": "topright",
+  "defaultMarkGeocode": true,
+  "zoom": 11,
+  "provider": "nominatim",
+  "providerOptions": {
+},
+};
+
+            // note: geocoder name should start with lowercase
+            var geocoderName_geocoder_b913579655dbdde203ebe907033a6dfd = geocoderOpts_geocoder_b913579655dbdde203ebe907033a6dfd["provider"];
+
+            var customGeocoder_geocoder_b913579655dbdde203ebe907033a6dfd = L.Control.Geocoder[ geocoderName_geocoder_b913579655dbdde203ebe907033a6dfd ](
+                geocoderOpts_geocoder_b913579655dbdde203ebe907033a6dfd['providerOptions']
+            );
+            geocoderOpts_geocoder_b913579655dbdde203ebe907033a6dfd["geocoder"] = customGeocoder_geocoder_b913579655dbdde203ebe907033a6dfd;
+
+            L.Control.geocoder(
+                geocoderOpts_geocoder_b913579655dbdde203ebe907033a6dfd
+            ).on('markgeocode', function(e) {
+                var zoom = geocoderOpts_geocoder_b913579655dbdde203ebe907033a6dfd['zoom'] || map_f7be27ee19ae274163280b074de720c0.getZoom();
+                map_f7be27ee19ae274163280b074de720c0.setView(e.geocode.center, zoom);
+            }).addTo(map_f7be27ee19ae274163280b074de720c0);
+
+        
+    
+            var layer_control_5fb962b0c054bd4fee6ea5bfdf52ec16_layers = {
+                base_layers : {
+                    "https://server.arcgisonline.com/arcgis/rest/services/world_imagery/mapserver/tile/{z}/{y}/{x}" : tile_layer_fdf3f4705842c5d92a39f8d5a93c4409,
+                    "Light Mode" : tile_layer_a828df5a61e014b103dae5df67dcdf9f,
+                    "Dark Mode" : tile_layer_86eb9fb46a13b41691b64f52cfe214f2,
+                },
+                overlays :  {
+                    "Registry Projects" : marker_cluster_d726dd02835edf8b5c4c0ecb555c4488,
+                    "Carbon Storage Heatmap" : heat_map_dfd28b649ada8f5273e044c455f722f3,
+                },
+            };
+            let layer_control_5fb962b0c054bd4fee6ea5bfdf52ec16 = L.control.layers(
+                layer_control_5fb962b0c054bd4fee6ea5bfdf52ec16_layers.base_layers,
+                layer_control_5fb962b0c054bd4fee6ea5bfdf52ec16_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_f7be27ee19ae274163280b074de720c0);
+
+        
+</script>
+</html>

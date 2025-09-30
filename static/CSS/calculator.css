@@ -1,0 +1,120 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to bottom, #d0f0fd, #a0e1fc);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding-top: 30px;
+}
+
+.calculator-container {
+    background: #ffffff;
+    padding: 30px 40px;
+    border-radius: 25px;
+    width: 650px;
+    /* Increased width */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    animation: fadeIn 1s ease;
+}
+
+h1 {
+    color: #0288d1;
+    margin-bottom: 20px;
+    animation: slideDown 1s ease;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+    text-align: left;
+}
+
+.input-group {
+    margin-bottom: 12px;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    transition: transform 0.2s, border 0.2s;
+}
+
+input:focus,
+select:focus {
+    border-color: #0288d1;
+    transform: scale(1.03);
+}
+
+button {
+    background: #0288d1;
+    color: white;
+    padding: 12px 25px;
+    margin-top: 15px;
+    border-radius: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+
+button:hover {
+    background: #01579b;
+    transform: scale(1.05);
+}
+
+.result {
+    margin-top: 25px;
+    font-weight: bold;
+    color: #01579b;
+    min-height: 120px;
+    padding: 20px;
+    border-radius: 15px;
+    background: linear-gradient(135deg, #e1f5fe, #b3e5fc);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    animation: fadeInText 1s ease;
+    text-align: left;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInText {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
